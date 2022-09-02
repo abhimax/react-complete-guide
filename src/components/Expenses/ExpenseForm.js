@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = () => {
+const ExpenseForm = ({onSaveExpenseData}) => {
   // 01 - multiple useStates
   // const [enteredTitle, setEnteredTitle] = useState('');
   // const [enteredAmount, setEnteredAmount] = useState('');
@@ -80,8 +80,7 @@ const ExpenseForm = () => {
       enteredAmount: "",
       enteredDate: "",
     });
-    console.log('expenseData',expenseData);
-    console.log('inputState',expenseData);
+    onSaveExpenseData(expenseData);
   };
 
   return (

@@ -24,9 +24,15 @@ const App = () => {
       date: new Date(2021, 5, 12),
     },
   ];
+  const getNewExpense = (newExpense) => {
+    const expense = {
+      ...newExpense
+    }
+    console.log('From App.js:',expense);
+  }
   return (
     <div>
-      <NewExpense/>
+      <NewExpense onExpenseSend={getNewExpense}/>
       <Expenses expenses={expenses}/>
     </div>
   );
