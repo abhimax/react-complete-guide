@@ -9,21 +9,32 @@ const Expenses = ({ expenses }) => {
   const onChangeFilterDataHandler = (changedFilterValue) => {
     setFilterValue(changedFilterValue);
   };
+
+  const filteredExpense = expenses.filter(
+    (item) => filterValue === item.date.getFullYear().toString()
+  );
+
+  let expenseContent = <p>No expense found!</p>
+  if (filteredExpense.length > 0){
+    expenseContent = filteredExpense.map((item) => {
+        return (
+          <ExpenseItem
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
+            key={item.id}
+          />
+        );
+      });
+  }
   return (
     <div>
       <Card className="expenses">
-        <ExpensesFilter selectedValue={filterValue} onChangeFilterData={onChangeFilterDataHandler} />
-        {expenses &&
-          expenses.map((item) => {
-            return (
-              <ExpenseItem
-                title={item.title}
-                amount={item.amount}
-                date={item.date}
-                key={item.id}
-              />
-            );
-          })}
+        <ExpensesFilter
+          selectedValue={filterValue}
+          onChangeFilterData={onChangeFilterDataHandler}
+        />
+        {expenseContent}
       </Card>
     </div>
   );
