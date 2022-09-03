@@ -13,7 +13,6 @@ const Expenses = ({ expenses }) => {
     <div>
       <Card className="expenses">
         <ExpensesFilter selectedValue={filterValue} onChangeFilterData={onChangeFilterDataHandler} />
-        <span>Display Filter value : {filterValue}</span>
         {expenses &&
           expenses.map((item) => {
             return (
