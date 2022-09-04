@@ -3,6 +3,7 @@ import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import "./Expenses.css";
 import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
 const Expenses = ({ expenses }) => {
   const [filterValue, setFilterValue] = useState("2022");
@@ -14,19 +15,6 @@ const Expenses = ({ expenses }) => {
     (item) => filterValue === item.date.getFullYear().toString()
   );
 
-  let expenseContent = <p>No expense found!</p>
-  if (filteredExpense.length > 0){
-    expenseContent = filteredExpense.map((item) => {
-        return (
-          <ExpenseItem
-            title={item.title}
-            amount={item.amount}
-            date={item.date}
-            key={item.id}
-          />
-        );
-      });
-  }
   return (
     <div>
       <Card className="expenses">
@@ -34,7 +22,7 @@ const Expenses = ({ expenses }) => {
           selectedValue={filterValue}
           onChangeFilterData={onChangeFilterDataHandler}
         />
-        {expenseContent}
+        <ExpensesList filteredExpense={filteredExpense}/>
       </Card>
     </div>
   );
