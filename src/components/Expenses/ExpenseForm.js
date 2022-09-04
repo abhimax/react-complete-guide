@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ExpenseForm.css";
-const ExpenseForm = ({onSaveExpenseData,onCancel}) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancel }) => {
   // 01 - multiple useStates
   // const [enteredTitle, setEnteredTitle] = useState('');
   // const [enteredAmount, setEnteredAmount] = useState('');
@@ -72,7 +72,7 @@ const ExpenseForm = ({onSaveExpenseData,onCancel}) => {
     event.preventDefault();
     const expenseData = {
       title: inputState.enteredTitle,
-      amount: inputState.enteredAmount,
+      amount: +inputState.enteredAmount,
       date: new Date(inputState.enteredDate),
     };
     setInputState({
@@ -86,14 +86,18 @@ const ExpenseForm = ({onSaveExpenseData,onCancel}) => {
 
   const onCancelExpenseHandler = () => {
     onCancel();
-  }
+  };
 
   return (
     <form onSubmit={submitHandler}>
       <div className="new-expense__controls">
         <div className="new-expense__control">
           <label>Title</label>
-          <input type="text" value={inputState.enteredTitle} onChange={titleChangeHandler} />
+          <input
+            type="text"
+            value={inputState.enteredTitle}
+            onChange={titleChangeHandler}
+          />
         </div>
         <div className="new-expense__control">
           <label>Amount</label>
@@ -117,7 +121,9 @@ const ExpenseForm = ({onSaveExpenseData,onCancel}) => {
         </div>
       </div>
       <div className="new-expense__actions">
-        <button type="submit" onClick={ onCancelExpenseHandler}>Cancel</button>
+        <button type="submit" onClick={onCancelExpenseHandler}>
+          Cancel
+        </button>
         <button type="submit">Add Expense</button>
       </div>
     </form>
