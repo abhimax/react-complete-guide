@@ -1,9 +1,13 @@
 # React Expense Tracker
-Expense Tracker features.
+## Expense Tracker features.
 + Add expenses
 + Filter expenses
-+ display expenses bar graph in dashboard
++ Display expenses bar graph in dashboard
+
+## View / filter expenses
 ![EXPENSETRACKER!](readme-res/expense-tracker-screen-1.png)
+
+## Add new expenses
 ![EXPENSETRACKER2!](readme-res/expense-tracker-screen-2.png)
 
 ## Getting Started with Create React App
